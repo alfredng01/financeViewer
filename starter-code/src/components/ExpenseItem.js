@@ -2,20 +2,28 @@ import React from "react";
 import "./ExpenseItem.css";
 
 
-export default function ExpenseItem()
+export default function ExpenseItem(prop)
 {
-    const itemDate = new Date(2021, 5, 15);
-    const itemTitle = 'Bills';
-    const itemAmount = 284.12;
+    const month = prop.date.toLocaleString("en-US", {month: "long"});
+    const day = prop.date.toLocaleString("en-US", {day: "2-digit"});
+    const year = prop.date.getFullYear();
 
     return (
         <div className="expense-item">
-            <div>
-                {itemDate.toISOString()}
-            </div>
+           <div>
+                <div>
+                    {month}
+                </div>
+                <div>
+                    {day}
+                </div>
+                <div>
+                    {year}
+                </div>
+           </div>
             <div className="expense-item_description">
-                <h2>{itemTitle}</h2>
-                <div className="expense-item_price">{itemAmount}</div>
+                <h2>{prop.title}</h2>
+                <div className="expense-item_price">{prop.amount}</div>
             </div>
         </div>
     );
